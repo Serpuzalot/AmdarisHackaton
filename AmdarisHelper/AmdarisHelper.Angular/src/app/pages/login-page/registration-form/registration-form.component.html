@@ -1,0 +1,48 @@
+<div class="registration-form">
+  <div class="registration-form-wrapper">
+    <h3 class="registration-form-title">Registration</h3>
+    <form [formGroup] = "registrationForm" class="registration-form-fields">
+      <mat-form-field class="registration-form-field">
+        <mat-label>User Name</mat-label>
+        <input matInput formControlName="userName" placeholder="Input your first name">
+        <mat-error *ngIf="registrationForm.controls['userName'].hasError('required')">
+          User Name is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="registration-form-field">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Input your email">
+        <mat-error *ngIf="registrationForm.controls['email'].hasError('email') &&
+                          !registrationForm.controls['email'].hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="registrationForm.controls['email'].hasError('required')">
+          Email is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="registration-form-field">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password"  [ngModel]="password" placeholder="Input your password">
+        <mat-error *ngIf="registrationForm.controls['password'].hasError('required')">
+          Password is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="registration-form-field">
+        <mat-label>Verify Password</mat-label>
+        <input matInput formControlName="confirmPassword" [errorStateMatcher]="matcher" placeholder="confirm your password">
+        <mat-error *ngIf="registrationForm.controls['confirmPassword'].hasError('required')">
+          Verification Password is required
+        </mat-error>
+        <mat-error *ngIf="registrationForm.hasError('notSame') &&
+                          !registrationForm.controls['confirmPassword'].hasError('required')">
+          Passwords do not match
+        </mat-error>
+      </mat-form-field>
+      <div class="registration-form-buttons-wrapper">
+        <button mat-raised-button color="primary"
+                [disabled]="registrationForm.invalid"
+                (click)="onSubmitRegistrationForm()">Sign Up</button>
+      </div>
+    </form>
+  </div>
+</div>
