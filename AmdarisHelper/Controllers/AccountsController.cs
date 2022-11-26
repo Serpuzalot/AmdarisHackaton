@@ -1,6 +1,7 @@
 ﻿using AmdarisHelper.BLL.Interfaces;
 using AmdarisHelper.Common.Dtos.User;
 using AmdarisHelper.Domain;
+using AmdarisHelper.Domain.Entities;
 using AmdarisHelper.JwtFeatures;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;

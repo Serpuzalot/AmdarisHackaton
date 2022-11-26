@@ -1,12 +1,8 @@
 ﻿using AmdarisHelper.Common.Dtos.User;
-using AmdarisHelper.Domain;
+using AmdarisHelper.Domain.Entities;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace AmdarisHelper.BLL.Interfaces
 {
