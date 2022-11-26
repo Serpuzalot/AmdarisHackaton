@@ -1,4 +1,6 @@
 using AmdarisHelper.Dal;
+using AmdarisHelper.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +14,28 @@ builder.Services.AddDbContext<DataContext>(
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddIdentity<User, Role>()
+             .AddEntityFrameworkStores<DataContext>()
+             .AddDefaultTokenProviders();
+
 var app = builder.Build();
+
+using (var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
+{
+    using (var context = serviceScope.ServiceProvider.GetService<DataContext>())
+    {
+        try
+        {
+            context.Database.Migrate();
+
+            int result = context.Initialize().Result;
+        }
+        catch
+        {
+            throw;
+        }
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
