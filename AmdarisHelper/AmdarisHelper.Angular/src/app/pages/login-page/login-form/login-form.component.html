@@ -1,0 +1,39 @@
+<div class="login-form">
+  <div class="login-form-wrapper">
+    <h3 class="login-form-title">Sing In</h3>
+    <form [formGroup]="loginForm" class="login-form-fields">
+      <mat-form-field class="login-form-field">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Input your email">
+        <mat-error *ngIf="loginForm.controls['email'].hasError('email') &&
+                          !loginForm.controls['email'].hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+          Email is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="login-form-field">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" placeholder="Input your password">
+        <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+          Password is required
+        </mat-error>
+      </mat-form-field>
+      <div class="login-form-buttons-wrapper">
+        <button mat-raised-button
+                color="primary"
+                (click)="submitLoginForm()"
+                [disabled]="loginForm.invalid">
+          Sign In
+        </button>
+        <span class="login-form-buttons-separator">Or</span>
+        <button mat-raised-button
+                class="login-form-buttons-registration"
+                [mat-dialog-close]="true">
+          Registration
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
