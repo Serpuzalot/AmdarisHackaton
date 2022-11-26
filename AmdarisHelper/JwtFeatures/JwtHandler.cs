@@ -1,4 +1,5 @@
 ﻿using AmdarisHelper.Domain;
+using AmdarisHelper.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
