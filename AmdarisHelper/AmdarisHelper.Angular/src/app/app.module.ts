@@ -8,6 +8,7 @@ import {AppSharedModule} from "./components/shared/app-shared/app-shared.module"
 import { LoginFormComponent } from './pages/login-page/login-form/login-form.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { RegistrationFormComponent } from './pages/login-page/registration-form/registration-form.component';
+import {AuthGuard} from "./guards/auth.guard";
 
 @NgModule({
   declarations: [
@@ -18,12 +19,12 @@ import { RegistrationFormComponent } from './pages/login-page/registration-form/
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     AppSharedModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
