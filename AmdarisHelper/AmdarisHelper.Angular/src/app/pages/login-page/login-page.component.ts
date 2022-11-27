@@ -1,6 +1,3 @@
-// @ts-ignore
-// @ts-ignore
-
 import {Component, HostListener, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {LoginFormComponent} from "./login-form/login-form.component";
