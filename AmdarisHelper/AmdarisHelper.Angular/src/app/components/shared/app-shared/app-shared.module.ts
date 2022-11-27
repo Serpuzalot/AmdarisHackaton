@@ -41,10 +41,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import {AppRoutingModule} from "../../../app-routing.module";
+import {PhotoAndTitleComponent} from "../../photo-and-title/photo-and-title.component";
 
 
 @NgModule({
-  declarations: [],
+  declarations: [PhotoAndTitleComponent],
   imports: [
     CommonModule,
     MatAutocompleteModule,
@@ -118,7 +120,8 @@ import { MatTableModule } from '@angular/material/table';
     MatTooltipModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    PhotoAndTitleComponent,
   ]
 })
 export class AppSharedModule { }

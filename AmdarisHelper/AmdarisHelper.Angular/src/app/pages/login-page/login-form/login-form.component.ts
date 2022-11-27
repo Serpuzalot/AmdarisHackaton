@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {DataEncryption} from "../../../services/DataEncryption";
+import {Router} from "@angular/router";
+import {DialogRef} from "@angular/cdk/dialog";
 
 @Component({
   selector: 'app-login-form',
@@ -10,9 +12,14 @@ import {DataEncryption} from "../../../services/DataEncryption";
 })
 export class LoginFormComponent implements OnInit{
 
+  private readonly password = '123456789';
+  private readonly email = 'MyEmail@email.com'
+
   loginForm: FormGroup;
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialogRef: DialogRef<LoginFormComponent>,
+              public dialog: MatDialog,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -29,5 +36,12 @@ export class LoginFormComponent implements OnInit{
   submitLoginForm(): void {
     const dataEncryptor = new DataEncryption();
     const encryptPassword = dataEncryptor.encryptString(this.loginForm.controls['password'].value)
+    if (this.loginForm.controls['password'].value == this.password &&
+        this.loginForm.controls['email'].value == this.email) {
+      localStorage.setItem('isLogin','true');
+      this.dialogRef.close();
+      this.router.navigate(['main']);
+    }
+
   }
 }

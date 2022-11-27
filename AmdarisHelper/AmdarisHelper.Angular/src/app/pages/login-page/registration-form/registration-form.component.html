@@ -22,14 +22,14 @@
       </mat-form-field>
       <mat-form-field class="registration-form-field">
         <mat-label>Password</mat-label>
-        <input matInput formControlName="password"  [ngModel]="password" placeholder="Input your password">
+        <input matInput formControlName="password" type="password" [ngModel]="password" placeholder="Input your password">
         <mat-error *ngIf="registrationForm.controls['password'].hasError('required')">
           Password is required
         </mat-error>
       </mat-form-field>
       <mat-form-field class="registration-form-field">
         <mat-label>Verify Password</mat-label>
-        <input matInput formControlName="confirmPassword" [errorStateMatcher]="matcher" placeholder="confirm your password">
+        <input matInput formControlName="confirmPassword" type="password" [errorStateMatcher]="matcher" placeholder="confirm your password">
         <mat-error *ngIf="registrationForm.controls['confirmPassword'].hasError('required')">
           Verification Password is required
         </mat-error>
