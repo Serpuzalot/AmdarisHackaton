@@ -1,0 +1,34 @@
+.main-block {
+  width: 100%;
+  height: 100%;
+  &-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-title {
+    cursor: pointer;
+    font-size: 35px;
+    color: #fff;
+    &:hover {
+      font-size: 40px;
+      transition: 0.5s ease;
+    }
+  }
+
+  &-image {
+    height: 350px;
+    width: 550px;
+  }
+
+  &-underline{
+    transform: translateY(-150px);
+    display: block;
+    height: 3px;
+    width: 900px;
+    background-color: #fff;
+  }
+}

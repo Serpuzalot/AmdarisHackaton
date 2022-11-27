@@ -1,5 +1,6 @@
 using AmdarisHelper.BLL.Interfaces;
 using AmdarisHelper.Dal;
+using AmdarisHelper.Domain.Entities;
 using AmdarisHelper.Domain;
 using AmdarisHelper.JwtFeatures;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using AmdarisHelper.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -66,6 +68,23 @@ builder.Services.AddScoped<JwtHandler>();
 
 var app = builder.Build();
 
+using (var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
+{
+    using (var context = serviceScope.ServiceProvider.GetService<DataContext>())
+    {
+        try
+        {
+            context.Database.Migrate();
+
+            int result = context.Initialize().Result;
+        }
+        catch
+        {
+            throw;
+        }
+    }
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -81,7 +100,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 
-//app.UseDbTransaction();
+app.UseDbTransaction();
 app.MapControllers();
 
 app.Run();

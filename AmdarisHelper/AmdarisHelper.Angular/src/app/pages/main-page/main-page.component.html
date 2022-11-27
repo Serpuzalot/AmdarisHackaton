@@ -1,0 +1,29 @@
+<div class="main-page">
+  <h3 class="main-page-title">
+    {{projectTitle}}
+  </h3>
+  <div class="main-page-wrapper" (mousedown)="mouseDownTrack($event)" (mouseup)="isMouseDown = false" (mousemove)="moveEvent($event)">
+    <div class="main-page-block">
+      <app-photo-and-title title="Medical Allowance" photoPath="./assets/medicalAllowance.jpg"></app-photo-and-title>
+    </div>
+    <div class="main-page-block">
+      <app-photo-and-title title="Performance Review" photoPath="./assets/performance.jpg"></app-photo-and-title>
+    </div>
+    <div class="main-page-block">
+      <app-photo-and-title title="Submit My Timesheet" photoPath="./assets/calendar123.jpg"></app-photo-and-title>
+    </div>
+    <div class="main-page-block">
+      <app-photo-and-title title="Unpaid Leave" photoPath="./assets/leave.jpg"></app-photo-and-title>
+    </div>
+    <div class="main-page-block">
+      <app-photo-and-title title="Unpaid Day Off" photoPath="./assets/day off.jfif"></app-photo-and-title>
+    </div>
+    <div class="main-page-block">
+      <app-photo-and-title title="Benefits" photoPath="./assets/benefits.png"></app-photo-and-title>
+    </div>
+  </div>
+  <div class="main-page-navigation">
+    <button (click)="upClick()"><mat-icon class="main-page-navigation-arrow">keyboard_arrow_up</mat-icon></button>
+    <button (click)="downClick()"><mat-icon class="main-page-navigation-arrow">keyboard_arrow_down</mat-icon></button>
+  </div>
+</div>
